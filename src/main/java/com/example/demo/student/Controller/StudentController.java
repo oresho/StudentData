@@ -1,8 +1,13 @@
-package com.example.demo.student;
+package com.example.demo.student.Controller;
 
+import com.example.demo.student.Dto.StudentDto;
+import com.example.demo.student.Entity.Student;
+import com.example.demo.student.Service.StudentService;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -10,20 +15,25 @@ import java.util.List;
 
 public class StudentController {
 
-    private final StudentService studentService;
 
-    @Autowired
-    public StudentController(StudentService studentService) {
+    @Autowired//injecting student service into the controller class using autowired annotation
+    private StudentService studentService;
+    /* public StudentController(StudentService studentService) {
         this.studentService = studentService;
-    }
+    }*/
+    //injecting student service manually
+    @Autowired
+    private ModelMapper modelMapper;
 
-    @GetMapping //getting something out from our server
+    @GetMapping//getting something out from our server
     public List<Student>  getStudents(){
         return studentService.getStudents();
      }
 
      @PostMapping
-     public void registerNewStudent(@RequestBody Student student){
+     public void registerNewStudent(@RequestBody @Valid StudentDto studentDto){
+        Student student = new Student();
+        student = modelMapper.map(studentDto,Student.class);
         studentService.addNewStudent(student);
      }
 

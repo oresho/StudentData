@@ -1,10 +1,7 @@
-package com.example.demo.student;
+package com.example.demo.student.Entity;
 
 
 import javax.persistence.*;
-import javax.validation.constraints.*;
-import java.time.LocalDate;
-import java.time.Period;
 
 @Entity(name = "Student") // use persistence not hibernate, good practice to specify the student name.
 @Table(
@@ -34,43 +31,27 @@ public class Student {
             nullable = false,
             columnDefinition = "TEXT"
     )
-    @NotBlank(message = "Name is mandatory")
-
-
     private String name;
     @Column(
             name = "email",
             nullable = false,
             columnDefinition = "TEXT"
     )
-    @NotBlank(message = "Email is mandatory")
-    @Email
     private String email;
-    @Column(
-            name = "dob",
-            nullable = false,
-            columnDefinition = "date"
-    )
-    @Past
-    private LocalDate dob;
-
-    @Transient
-    private Integer age;
 
     public Student() {
     }
 
-    public Student(Long id, String name, String email, LocalDate dob) {
+    public Student(Long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
-        this.dob = dob;
+
     }
 
-    public Student(String name, String email, LocalDate dob) {
+    public Student(String name, String email) {
         this.name = name;
         this.email = email;
-        this.dob = dob;
     }
 
     public Long getId() {
@@ -97,30 +78,12 @@ public class Student {
         this.email = email;
     }
 
-    public LocalDate getDob() {
-        return dob;
-    }
-
-    public void setDob(LocalDate dob) {
-        this.dob = dob;
-    }
-
-    public Integer getAge() {
-        return Period.between(this.dob,LocalDate.now()).getYears();
-    }
-
-    public void setAge(Integer age) {
-        this.age = age;
-    }
-
     @Override
     public String toString() {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", dob=" + dob +
-                ", age=" + age +
                 '}';
     }
 }

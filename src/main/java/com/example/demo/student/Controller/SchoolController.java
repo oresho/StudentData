@@ -31,14 +31,14 @@ public class SchoolController {
 
     @PutMapping
     public void putSchools(
-            @PathVariable ("{schoolId}") Long schoolId,
+            @PathVariable ("schoolId") Long schoolId,
             @RequestParam(required = false) String schoolName,
             @RequestParam(required = false) String location){
         schoolService.updateSchool(schoolId,schoolName,location);
     }
 
     @DeleteMapping
-    public void  deleteSchool(@PathVariable ("{schoolId}") Long schoolId){
+    public void  deleteSchool(@PathVariable ("schoolId") Long schoolId){
         schoolService.deleteSchool(schoolId);
     }
 }

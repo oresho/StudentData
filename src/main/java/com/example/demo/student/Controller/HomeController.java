@@ -27,16 +27,15 @@ public class HomeController {
         home = modelMapper.map(homeDto,Home.class);
         homeService.addHome(home);}
 
-    @DeleteMapping(path = "{homeId}")
-    public void deleteHome(@PathVariable("{homeId}") Long homeId){
+    @DeleteMapping(path = "/{homeId}")
+    public void deleteHome(@PathVariable("homeId") Long homeId){
         homeService.deleteHome(homeId);
     }
 
-    @PutMapping(path = "{homeId}")
+    @PutMapping(path = "/{homeId}/")
     public void putHome(
-            @PathVariable("{homeId}") Long homeId,
+            @PathVariable("homeId") Long homeId,
             @RequestParam(required = false) String state,
             @RequestParam(required = false) String city){
         homeService.updateHome(homeId,state,city);}
-
 }

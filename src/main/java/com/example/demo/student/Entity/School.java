@@ -1,13 +1,17 @@
 package com.example.demo.student.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity(name = "school")
 @Table(name = "school")
 public class School {
     @Id
     @Column(name = "id", nullable = false)
-    @SequenceGenerator(name = "school_sequence", sequenceName = "school_sequence", initialValue = 1)
+    @SequenceGenerator(name = "school_sequence", sequenceName = "school_sequence", allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE,generator = "school_sequence")
     private Long id;
     @Column(name = "schoolName", nullable = false,columnDefinition = "TEXT")
@@ -15,6 +19,17 @@ public class School {
     @Column(name = "location", nullable = false,columnDefinition = "TEXT")
     private String location;
 
+
+//    @OneToMany(mappedBy = "school")
+//    @JsonIgnore
+//    private Set<Student> student = new HashSet<>();
+//    public Set<Student> getStudent() {
+//        return student;
+//    }
+//
+//    public void setStudent(Set<Student> student) {
+//        this.student = student;
+//    }
     public School(Long id, String schoolName, String location) {
         this.id = id;
         this.schoolName = schoolName;

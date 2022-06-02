@@ -1,7 +1,9 @@
 package com.example.demo.student.Dto;
 
+import com.example.demo.student.Entity.Student;
 import com.example.demo.student.Validator.StateConstraint;
 
+import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.NotBlank;
 
 public class HomeDto {
@@ -36,6 +38,7 @@ public class HomeDto {
         this.city = city;
     }
 
+
     public HomeDto(Long id, String state, String city) {
         this.id = id;
         this.state = state;
@@ -49,4 +52,5 @@ public class HomeDto {
 
     public HomeDto() {
     }
+
 }

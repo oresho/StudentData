@@ -20,6 +20,17 @@ public class Home {
     @Column(name = "city", nullable = false, columnDefinition = "TEXT")
     private String city;
 
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "id", referencedColumnName = "home_id")
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     public Long getId() {
         return id;
@@ -56,6 +67,12 @@ public class Home {
         this.city = city;
     }
 
+    public Home(String state, String city, Student student) {
+        this.state = state;
+        this.city = city;
+        this.student = student;
+    }
+
     public Home() {
     }
 
@@ -65,6 +82,7 @@ public class Home {
                 "id=" + id +
                 ", state='" + state + '\'' +
                 ", city='" + city + '\'' +
+                ", student=" + student +
                 '}';
     }
 }

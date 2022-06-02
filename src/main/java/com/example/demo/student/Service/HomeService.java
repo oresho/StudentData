@@ -1,6 +1,7 @@
 package com.example.demo.student.Service;
 
 import com.example.demo.student.Entity.Home;
+import com.example.demo.student.Entity.Student;
 import com.example.demo.student.Repository.HomeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,13 @@ public class HomeService {
     }
 
     public void addHome(Home home){
-        homeRepository.save(home);
+        Optional<Home> homeOptional = homeRepository.findByState_City(home.getState(),home.getCity());
+        if(homeOptional.isEmpty()) {
+            homeRepository.save(home);
+        }
+        else{
+            throw new IllegalStateException("Home already exists");
+        }
     }
 
     public void deleteHome(Long homeId){

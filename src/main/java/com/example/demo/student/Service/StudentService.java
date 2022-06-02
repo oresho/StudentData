@@ -15,12 +15,7 @@ public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
-//    public StudentService(StudentRepository studentRepository) {
-//
-//        this.studentRepository = studentRepository;
-//    }
 
-//    @GetMapping //getting something out from our server
     public List<Student> getStudents(){
         return studentRepository.findAll(); //return List.of(
     }
@@ -32,7 +27,6 @@ public class StudentService {
             throw new IllegalStateException("email has already been used");
         }
         studentRepository.save(student);
-        // System.out.println(student);
     }
 
     public void deleteStudent(Long studentId) {
@@ -67,6 +61,5 @@ public class StudentService {
             }
             student.setEmail(email);
         }
-
     }
 }

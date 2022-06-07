@@ -14,8 +14,6 @@ import java.util.List;
 @RequestMapping("api/v1/student")
 
 public class StudentController {
-
-
     @Autowired//injecting student service into the controller class using autowired annotation
     private StudentService studentService;
     /* public StudentController(StudentService studentService) {

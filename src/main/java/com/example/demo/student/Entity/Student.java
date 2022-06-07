@@ -39,6 +39,17 @@ public class Student {
     )
     private String email;
 
+    @ManyToOne
+    private School school;
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
+
     public Student() {
     }
 
@@ -84,6 +95,7 @@ public class Student {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", school=" + school +
                 '}';
     }
 }

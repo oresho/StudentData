@@ -1,6 +1,8 @@
 package com.example.demo.student.Service;
 
+import com.example.demo.student.Entity.School;
 import com.example.demo.student.Entity.Student;
+import com.example.demo.student.Repository.SchoolRepository;
 import com.example.demo.student.Repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,12 +17,9 @@ public class StudentService {
 
     @Autowired
     private StudentRepository studentRepository;
-//    public StudentService(StudentRepository studentRepository) {
-//
-//        this.studentRepository = studentRepository;
-//    }
+    @Autowired
+    private SchoolRepository schoolRepository;
 
-//    @GetMapping //getting something out from our server
     public List<Student> getStudents(){
         return studentRepository.findAll(); //return List.of(
     }

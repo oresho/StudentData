@@ -1,10 +1,11 @@
 package com.example.demo.student.Dto;
 
+import com.example.demo.student.Entity.School;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 public class StudentDto {
-
     private Long id;
 
     @NotBlank(message = "Name is mandatory")
@@ -13,6 +14,15 @@ public class StudentDto {
     @NotBlank(message = "Email is mandatory")
     @Email
     private String email;
+    private School school;
+
+    public School getSchool() {
+        return school;
+    }
+
+    public void setSchool(School school) {
+        this.school = school;
+    }
 
 
     public StudentDto() {
@@ -46,6 +56,4 @@ public class StudentDto {
     public void setEmail(String email) {
         this.email = email;
     }
-
-
 }

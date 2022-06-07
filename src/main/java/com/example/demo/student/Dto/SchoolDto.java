@@ -1,12 +1,29 @@
 package com.example.demo.student.Dto;
 
+import com.example.demo.student.Entity.Student;
+import com.example.demo.student.Service.StudentService;
 import com.example.demo.student.Validator.StateConstraint;
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 public class SchoolDto {
     private Long id;
     private String schoolName;
     @StateConstraint
     private String location;
+
+    private List<Student> students;
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
+    }
+
+
 
     public SchoolDto(Long id, String schoolName, String location) {
         this.id = id;

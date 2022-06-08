@@ -13,6 +13,15 @@ public class HomeDto {
     private String state;
     @NotBlank(message = "Please input city")
     private String city;
+    private Student student;
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
 
     public Long getId() {
         return id;

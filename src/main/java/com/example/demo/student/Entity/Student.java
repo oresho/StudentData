@@ -38,26 +38,21 @@ public class Student {
             columnDefinition = "TEXT"
     )
     private String email;
+    @OneToOne(mappedBy = "student")
+    private Home home;
 
-    @JoinColumn(name = "home_id",referencedColumnName = "id")
-    private Long home_id;
-
-    public Long getHome_id() {
-        return home_id;
-    }
-
-    public void setHome_id(Long home_id) {
-        this.home_id = home_id;
+    public void setHome(Home home) {
+        this.home = home;
     }
 
     public Student() {
     }
 
-    public Student(Long id, String name, String email) {
+    public Student(Long id, String name, String email, Home home) {
         this.id = id;
         this.name = name;
         this.email = email;
-
+        this.home = home;
     }
 
     public Student(String name, String email) {
@@ -65,17 +60,10 @@ public class Student {
         this.email = email;
     }
 
-    public Student(String name, String email, Long home_id) {
+    public Student(String name, String email, Home home) {
         this.name = name;
         this.email = email;
-        this.home_id = home_id;
-    }
-
-    public Student(Long id, String name, String email, Long home_id) {
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.home_id = home_id;
+        this.home = home;
     }
 
     public Long getId() {
@@ -108,7 +96,7 @@ public class Student {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
-                ", home_id=" + home_id +
+                ", home=" + home +
                 '}';
     }
 }

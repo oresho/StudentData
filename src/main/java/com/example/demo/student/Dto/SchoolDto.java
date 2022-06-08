@@ -1,6 +1,5 @@
 package com.example.demo.student.Dto;
 
-import com.example.demo.student.Entity.Home;
 import com.example.demo.student.Validator.StateConstraint;
 
 public class SchoolDto {

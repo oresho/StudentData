@@ -1,5 +1,7 @@
 package com.example.demo.student.Dto;
 
+import com.example.demo.student.Entity.Home;
+
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.JoinTable;
@@ -16,14 +18,14 @@ public class StudentDto {
     @NotBlank(message = "Email is mandatory")
     @Email
     private String email;
-    private Long home_id;
+    private Home home;
 
-    public Long getHome_id() {
-        return home_id;
+    public Home getHome() {
+        return home;
     }
 
-    public void setHome_id(Long home_id) {
-        this.home_id = home_id;
+    public void setHome(Home home) {
+        this.home = home;
     }
 
     public StudentDto() {
@@ -32,12 +34,6 @@ public class StudentDto {
     public StudentDto(String name, String email) {
         this.name = name;
         this.email = email;
-    }
-
-    public StudentDto(String name, String email, Long home_id) {
-        this.name = name;
-        this.email = email;
-        this.home_id = home_id;
     }
 
     public Long getId() {

@@ -20,8 +20,7 @@ public class Home {
     @Column(name = "city", nullable = false, columnDefinition = "TEXT")
     private String city;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "id", referencedColumnName = "home_id")
+    @OneToOne
     private Student student;
 
     public Student getStudent() {

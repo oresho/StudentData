@@ -2,6 +2,7 @@ package com.example.demo.student.Entity;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "Student") // use persistence not hibernate, good practice to specify the student name.
 @Table(
@@ -39,19 +40,28 @@ public class Student {
     )
     private String email;
 
+    @ManyToMany(mappedBy = "students")
+    private List<Subject> subjects;
+
+//    public List<Subject> getSubjects() {
+//        return subjects;
+//    }
+
     public Student() {
     }
 
-    public Student(Long id, String name, String email) {
+    public Student(Long id, String name, String email, List<Subject> subjects) {
         this.id = id;
         this.name = name;
         this.email = email;
 
+        this.subjects = subjects;
     }
 
-    public Student(String name, String email) {
+    public Student(String name, String email, List<Subject> subjects) {
         this.name = name;
         this.email = email;
+        this.subjects = subjects;
     }
 
     public Long getId() {
